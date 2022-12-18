@@ -314,7 +314,7 @@ namespace DataAccessLayer
             {
                 cmd.CommandText = "INSERT INTO Kategoriler(UstKategori_ID,Isim,Durum,Silinmis) VALUES(@UstKategori_ID,@Isim, @Durum, @Silinmis)";
                 cmd.Parameters.Clear();
-                if (UstKatVarmi)
+                if (UstKatVarmi)    
                 {
                     cmd.Parameters.AddWithValue("@UstKategori_ID", kat.UstKategori_ID);
                 }
@@ -354,7 +354,7 @@ namespace DataAccessLayer
             try
             {
                 List<Kategori> kat = new List<Kategori>();
-                cmd.CommandText = "SELECT kat.ID,kat.UstKategori_ID,kat.Isim AS UstKategoriIsim,ak.Isim,kat.Durum,kat.Silinmis FROM Kategoriler AS kat JOIN Kategoriler AS ak ON ak.UstKategori_ID = kat.ID WHERE kat.Silinmis = @Silinmis";
+                cmd.CommandText = "EXEC usp_AltındaKategoriOlanUstKategorileriGetir @Silinmis";
                 cmd.Parameters.Clear();
                 cmd.Parameters.AddWithValue("@Silinmis", silinmis);
                 con.Open();
@@ -398,7 +398,7 @@ namespace DataAccessLayer
             try
             {
                 List<Kategori> kat = new List<Kategori>();
-                cmd.CommandText = "SELECT kat.ID,kat.Isim,uk.Isim AS UstKategoriIsim,ak.Isim AS AltKategoriIsim,kat.UstKategori_ID,kat.Durum,kat.Silinmis FROM Kategoriler AS kat JOIN Kategoriler AS uk ON kat.UstKategori_ID = uk.ID JOIN Kategoriler AS ak ON ak.UstKategori_ID = kat.ID WHERE kat.Silinmis = @Silinmis";
+                cmd.CommandText = "EXEC usp_AltKategorisiVeUstKategorisiOlanlariListele @Silinmis";
                 cmd.Parameters.Clear();
                 cmd.Parameters.AddWithValue("@Silinmis", silinmis);
                 con.Open();
@@ -428,7 +428,7 @@ namespace DataAccessLayer
             try
             {
                 List<Kategori> kat = new List<Kategori>();
-                cmd.CommandText = "SELECT kat.ID, kat.UstKategori_ID,uk.Isim AS UstKategoriIsim,kat.Isim,kat.Durum,kat.Silinmis FROM Kategoriler AS kat JOIN Kategoriler AS uk on kat.UstKategori_ID = uk.ID WHERE kat.UstKategori_ID = @UstKategori_ID AND kat.Silinmis = @Silinmis";
+                cmd.CommandText = "EXEC usp_UstKategoriyeGoreListele @Silinmis,@UstKategori_ID";
                 cmd.Parameters.Clear();
                 cmd.Parameters.AddWithValue("@UstKategori_ID", ustkategoriid);
                 cmd.Parameters.AddWithValue("@Silinmis", silinmis);
@@ -461,7 +461,7 @@ namespace DataAccessLayer
             {
                 List<Kategori> kat = new List<Kategori>();
 
-                cmd.CommandText = "SELECT ak.ID,ak.UstKategori_ID,ak.Isim,ak.Durum,ak.Silinmis FROM Kategoriler AS ak WHERE ak.UstKategori_ID IS NULL AND ak.Silinmis = @Silinmis";
+                cmd.CommandText = "EXEC usp_EnUstKategorileriListele @Silinmis";
 
                 cmd.Parameters.Clear();
                 cmd.Parameters.AddWithValue("@Silinmis", silinmis);
@@ -472,7 +472,6 @@ namespace DataAccessLayer
                     kat.Add(new Kategori()
                     {
                         ID = reader.GetInt32(0),
-                        UstKategori_ID = 0,
                         Isim = reader.GetString(2),
                         Durum = reader.GetBoolean(3),
                         Silinmis = reader.GetBoolean(4),
@@ -492,7 +491,7 @@ namespace DataAccessLayer
             List<Kategori> kategoriler = new List<Kategori>();
             try
             {
-                cmd.CommandText = "SELECT ak.ID,ak.UstKategori_ID,ak.Isim,ak.Durum,ak.Silinmis FROM Kategoriler AS ak WHERE ak.Silinmis = @Silinmis";
+                cmd.CommandText = "EXEC usp_ButunKategorileriListele @Silinmis";
                 cmd.Parameters.Clear();
                 cmd.Parameters.AddWithValue("@Silinmis", silinmis);
                 con.Open();

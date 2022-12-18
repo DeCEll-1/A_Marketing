@@ -58,10 +58,10 @@
     <Compile Include="Birimler\BirimEkle.Designer.cs">
       <DependentUpon>BirimEkle.cs</DependentUpon>
     </Compile>
-    <Compile Include="KategoriIslemleri.cs">
+    <Compile Include="Kategoriler\KategoriIslemleri.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="KategoriIslemleri.Designer.cs">
+    <Compile Include="Kategoriler\KategoriIslemleri.Designer.cs">
       <DependentUpon>KategoriIslemleri.cs</DependentUpon>
     </Compile>
     <Compile Include="Kategoriler\KategoriEkle.cs">
@@ -108,7 +108,7 @@
     <EmbeddedResource Include="Birimler\BirimEkle.resx">
       <DependentUpon>BirimEkle.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="KategoriIslemleri.resx">
+    <EmbeddedResource Include="Kategoriler\KategoriIslemleri.resx">
       <DependentUpon>KategoriIslemleri.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Kategoriler\KategoriEkle.resx">

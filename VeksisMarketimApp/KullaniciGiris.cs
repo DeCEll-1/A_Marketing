@@ -71,5 +71,13 @@ namespace VeksisMarketimApp
                 Application.Exit();
             }
         }
+
+        private void tb_sifre_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btn_giris.PerformClick();
+            }
+        }
     }
 }

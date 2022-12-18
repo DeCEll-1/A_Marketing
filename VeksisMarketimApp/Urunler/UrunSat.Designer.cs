@@ -42,7 +42,9 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.groupBox1.Controls.Add(this.dataGridView1);
             this.groupBox1.Location = new System.Drawing.Point(228, 12);
@@ -65,6 +67,7 @@
             // 
             // btn_Sat
             // 
+            this.btn_Sat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btn_Sat.Location = new System.Drawing.Point(12, 461);
             this.btn_Sat.Name = "btn_Sat";
             this.btn_Sat.Size = new System.Drawing.Size(213, 40);
@@ -122,13 +125,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(500, 513);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.tb_Birim);
             this.Controls.Add(this.cb_Urunler);
             this.Controls.Add(this.btn_Sat);
             this.Controls.Add(this.tb_Stok);
             this.Controls.Add(this.tb_Barkod);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.groupBox1);
             this.Name = "UrunSat";
             this.Text = "Ürün Satma Sayfası";
             this.groupBox1.ResumeLayout(false);
